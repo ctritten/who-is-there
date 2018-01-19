@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -z "$1" ]] ; then
+    echo "Please provide go src filename" && exit 1
+fi
+
+docker run --rm -ti -v "$(pwd)":/go/bin -v "$(pwd)":/go/src golang sh -c "GOBIN=/go/bin go install /go/src/$1"
